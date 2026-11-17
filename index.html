@@ -21,7 +21,7 @@
       <ul>
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#quienes-somos">Quiénes somos</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="proyectos.html">Proyectos</a></li>
         <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
@@ -33,7 +33,7 @@
     <!-- SECCIÓN 1: INICIO (LOGO ANIMADO) -->
     <section id="inicio" class="section hero">
       <div class="hero-logo-wrapper">
-        <video class="hero-logo-video" autoplay muted playsinline preload="auto">
+        <video id="introVideo" class="hero-logo-video" autoplay muted playsinline preload="auto">
           <source src="Recursos/intro.mov" type='video/mp4; codecs="hvc1"'>
           <source src="Recursos/intro.webm" type="video/webm">
         </video>
@@ -44,33 +44,32 @@
     <section id="quienes-somos" class="section">
       <div class="container">
         <span class="section-label">01 / Quiénes somos</span>
-        <h2>Corte A Cine</h2>
+        <h2>Productora audiovisual</h2>
         
-<div class="about-grid">
-          <div class="about-col">
-            <p>
-              Somos una productora argentina audiovisual liderada por <strong>Antonella Riga</strong> y <strong>Fernanda Rocca</strong>, unidas por la pasión de contar historias que emocionen y trasciendan fronteras.
-            </p>
-            <p>
-              Desde Córdoba, creamos proyectos innovadores con una mirada única, combinando sensibilidad artística, narrativas poderosas y estándares de producción internacionales.
-            </p>
-            <p>
-              Con años de experiencia en la industria audiovisual, hemos trabajado en cine, series, documentales, coproducciones internacionales y contenidos originales que combinan creatividad, calidad narrativa y una visión contemporánea.
-            </p>
-            <p>
-              Nuestras producciones han sido reconocidas en numerosos festivales internacionales y distribuidas en circuitos de salas comerciales, medios alternativos y plataformas como Amazon, HBO, Movistar, Flow y Cine.ar.
-            </p>
-          </div>
-
-          <div class="about-col">
-            <p>
-              Además, ofrecemos servicios de producción, adaptándonos a cada proyecto y garantizando calidad y excelencia en todo el proceso.
-            </p>
-            <p>
-              Elegirnos es confiar en un equipo comprometido y cercano que cuida cada etapa del proceso con dedicación y un enfoque humano. Nos motiva trabajar con historias que inspiren, emocionen y dejen huella, apostando siempre a la colaboración y a la creación de contenidos.
-            </p>
-          </div>
+        <div class="about-columns">
+          <p>
+            Somos una productora argentina audiovisual liderada por <strong>Antonella Riga</strong> y <strong>Fernanda Rocca</strong>, unidas por la pasión de contar historias que emocionen y trasciendan fronteras.
+          </p>
+          <p>
+            Desde Córdoba, creamos proyectos innovadores con una mirada única, combinando sensibilidad artística, narrativas poderosas y estándares de producción internacionales.
+          </p>
+          <p>
+            Con años de experiencia en la industria audiovisual, hemos trabajado en cine, series, documentales, coproducciones internacionales y contenidos originales que combinan creatividad, calidad narrativa y una visión contemporánea.
+          </p>
+          <p>
+            Nuestras producciones han sido reconocidas en numerosos festivales internacionales y distribuidas en circuitos de salas comerciales, medios alternativos y plataformas como Amazon, HBO, Movistar, Flow y Cine.ar.
+          </p>
+          <p>
+            Además, ofrecemos servicios de producción, adaptándonos a cada proyecto y garantizando calidad y excelencia en todo el proceso.
+          </p>
+          <p>
+            Elegirnos es confiar en un equipo comprometido y cercano que cuida cada etapa del proceso con dedicación y un enfoque humano. Nos motiva trabajar con historias que inspiren, emocionen y dejen huella, apostando siempre a la colaboración y a la creación de contenidos.
+          </p>
         </div>
+      </div>
+    </section>
+
+  </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
@@ -79,26 +78,27 @@
     </div>
   </footer>
 
-  <!-- Script para mantener estático el último cuadro del logo animado -->
+  <!-- Script para congelar el último cuadro visible del logo animado -->
   <script>
-    const introVideo = document.querySelector('.hero-logo-video');
+    const video = document.getElementById('introVideo');
 
-    if (introVideo) {
-      const margenFinal = 0.2;
+    if (video) {
+      // Porcentaje del video donde se frena (0.96 = 96%). 
+      // Si todavía desaparece, bajalo a 0.92; si frena muy pronto, subilo a 0.98.
+      const puntoDeFreno = 0.96;
 
-      function congelarUltimoCuadro() {
-        if (introVideo.duration && introVideo.currentTime >= introVideo.duration - margenFinal) {
-          introVideo.pause();
-          return; 
+      function vigilarVideo() {
+        if (video.duration && video.currentTime >= video.duration * puntoDeFreno) {
+          video.pause();
+          return;
         }
-        if (!introVideo.paused && !introVideo.ended) {
-          requestAnimationFrame(congelarUltimoCuadro);
+        if (!video.ended) {
+          requestAnimationFrame(vigilarVideo);
         }
       }
 
-      introVideo.addEventListener('play', () => {
-        requestAnimationFrame(congelarUltimoCuadro);
-      });
+      // Arranca la vigilancia inmediatamente sin esperar al evento 'play'
+      requestAnimationFrame(vigilarVideo);
     }
   </script>
 
