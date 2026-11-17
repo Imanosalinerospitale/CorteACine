@@ -4,17 +4,18 @@
    ========================================================================== */
 :root {
   /* Paleta de colores */
-  --bg-color: #d6d6d4;          /* Gris piedra base (podés oscurecerlo a #c4c4c2 o aclararlo a #e2e2e0) */
-  --text-main: #181818;         /* Tinta principal (negro carbón suave) */
-  --text-muted: #555553;        /* Texto secundario / etiquetas */
-  --border-color: rgba(24, 24, 24, 0.16); /* Líneas divisorias sutiles */
-  --surface-placeholder: rgba(24, 24, 24, 0.06); /* Fondo para cuadros de imagen */
+  --bg-color: #ededeb;          /* Gris muy claro / tiza suave (probá #f2f2f0 si lo querés aún más blanco) */
+  --header-bg: rgba(237, 237, 235, 0.85); /* Fondo translúcido de la barra superior a tono */
+  --text-main: #181818;         /* Tinta principal */
+  --text-muted: #666664;        /* Texto secundario / etiquetas */
+  --border-color: rgba(24, 24, 24, 0.12); /* Líneas divisorias sutiles */
+  --surface-placeholder: rgba(24, 24, 24, 0.04); /* Fondo para cuadros de imagen */
 
-  /* Intensidad de la textura (0.0 = liso | 0.45 = sutil | 0.75 = marcada) */
-  --texture-opacity: 0.55;
+  /* Intensidad de la textura (0.0 = liso | 0.42 = sutil en fondo claro | 0.70 = marcada) */
+  --texture-opacity: 0.42;
 
   /* Tipografía */
-  --font-main: 'Economica', sans-serif;
+  --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Espaciados y medidas */
   --header-height: 76px;
@@ -40,7 +41,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-main);
   font-family: var(--font-main);
-  line-height: 1.45;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   position: relative;
@@ -57,7 +58,6 @@ ul {
 
 /* ==========================================================================
    TEXTURA ORGÁNICA (PAPEL / REVOQUE FINO)
-   Generada por SVG embebido para máxima nitidez en cualquier resolución
    ========================================================================== */
 .paper-texture {
   position: fixed;
@@ -87,28 +87,28 @@ ul {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--border-color);
-  background-color: rgba(214, 214, 212, 0.82);
-  backdrop-filter: blur(6px);
+  background-color: var(--header-bg);
+  backdrop-filter: blur(8px);
   z-index: 100;
 }
 
 .brand {
-  font-size: 1.55rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 
 .main-nav ul {
   display: flex;
   align-items: center;
-  gap: clamp(20px, 3.5vw, 44px);
+  gap: clamp(20px, 3.5vw, 40px);
 }
 
 .main-nav a {
-  font-size: 1.25rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   position: relative;
   padding: 4px 0;
@@ -148,7 +148,8 @@ ul {
 
 .section-label {
   display: block;
-  font-size: 1.05rem;
+  font-size: 0.8rem;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -156,10 +157,9 @@ ul {
 }
 
 h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
   margin-bottom: 40px;
 }
 
@@ -174,19 +174,20 @@ h2 {
 }
 
 .hero h1 {
-  font-size: clamp(4rem, 11vw, 8.5rem);
+  font-size: clamp(3.2rem, 9vw, 6.8rem);
   font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: 0.08em;
+  line-height: 0.98;
+  letter-spacing: -0.03em;
   text-transform: uppercase;
   margin-bottom: 24px;
 }
 
 .hero .subtitle {
-  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  font-weight: 400;
   color: var(--text-muted);
-  max-width: 560px;
-  letter-spacing: 0.02em;
+  max-width: 540px;
+  line-height: 1.5;
 }
 
 /* ==========================================================================
@@ -195,12 +196,13 @@ h2 {
 .about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 40px;
+  gap: 44px;
 }
 
 .about-grid p {
-  font-size: 1.45rem;
-  line-height: 1.5;
+  font-size: 1.05rem;
+  font-weight: 400;
+  line-height: 1.65;
   color: var(--text-main);
 }
 
@@ -227,13 +229,13 @@ h2 {
   justify-content: center;
   margin-bottom: 14px;
   color: var(--text-muted);
-  font-size: 1.15rem;
-  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
   transition: background-color 0.25s ease;
 }
 
 .project-card:hover .project-thumb {
-  background-color: rgba(24, 24, 24, 0.11);
+  background-color: rgba(24, 24, 24, 0.08);
 }
 
 .project-meta {
@@ -244,14 +246,13 @@ h2 {
 }
 
 .project-meta h3 {
-  font-size: 1.45rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .project-meta span {
-  font-size: 1.15rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   white-space: nowrap;
 }
@@ -267,8 +268,8 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.15rem;
-  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
   color: var(--text-muted);
 }
 
@@ -281,7 +282,7 @@ h2 {
   }
 
   .brand {
-    font-size: 1.3rem;
+    font-size: 1rem;
   }
 
   .main-nav ul {
@@ -289,7 +290,7 @@ h2 {
   }
 
   .main-nav a {
-    font-size: 1.05rem;
+    font-size: 0.8rem;
   }
 
   .section {
