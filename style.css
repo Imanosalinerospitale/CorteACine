@@ -4,7 +4,7 @@
    ========================================================================== */
 :root {
   /* Paleta de colores - Modo Oscuro */
-  --bg-color: #0a0a0a;          /* Negro sólido (cambiá a #000000 si el fondo del video es negro puro) */
+  --bg-color: #0a0a0a;          /* Negro sólido */
   --header-bg: rgba(10, 10, 10, 0.85); /* Fondo translúcido de la barra superior */
   --text-main: #ffffff;         /* Tinta principal blanca */
   --text-muted: #9a9a9a;        /* Texto secundario / etiquetas gris claro */
