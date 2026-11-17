@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CORTE A</title>
   
+  <!-- Favicon (ícono de pestaña y barra de favoritos) -->
+  <link rel="icon" type="image/png" href="Recursos/logo.png">
+  <link rel="apple-touch-icon" href="Recursos/logo.png">
+  
   <!-- Google Fonts: Syne (títulos) + Outfit (textos) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +21,10 @@
 
   <!-- Barra superior -->
   <header class="top-bar">
+    <a href="#inicio" class="brand-logo" aria-label="CORTE A - Inicio">
+      <img src="Recursos/logo.png" alt="CORTE A">
+    </a>
+
     <nav class="main-nav" aria-label="Navegación principal">
       <ul>
         <li><a href="#inicio">Inicio</a></li>
@@ -71,9 +79,10 @@
 
   </main>
 
+  <!-- Pie de página -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <span>CORTE A CINE </span>
+      <span>CORTE A</span>
       <a href="https://www.instagram.com/cortea.cine/" target="_blank" rel="noopener noreferrer" class="footer-link">
         Instagram / @cortea.cine
       </a>
@@ -81,12 +90,12 @@
     </div>
   </footer>
 
-<!-- Script para congelar el logo justo antes del fundido a negro (00:00:09:23) -->
+  <!-- Script para congelar el logo antes del fundido a negro -->
   <script>
     const video = document.getElementById('introVideo');
 
     if (video) {
-      const segundoCongelado = 8.75; 
+      const segundoCongelado = 8.75;
 
       function vigilarVideo() {
         if (video.currentTime >= segundoCongelado) {
