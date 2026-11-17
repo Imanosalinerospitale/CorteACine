@@ -130,13 +130,12 @@
     const introVideo = document.querySelector('.hero-logo-video');
 
     if (introVideo) {
-      // Margen en segundos antes del final donde querés congelar el logo (usar PUNTO, ej: 0.15)
       const margenFinal = 0.15;
 
       function congelarUltimoCuadro() {
         if (introVideo.duration && introVideo.currentTime >= introVideo.duration - margenFinal) {
           introVideo.pause();
-          return; // Detiene el chequeo una vez pausado
+          return; 
         }
         if (!introVideo.paused && !introVideo.ended) {
           requestAnimationFrame(congelarUltimoCuadro);
