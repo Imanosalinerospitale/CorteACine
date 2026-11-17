@@ -1,22 +1,22 @@
 /* ==========================================================================
    VARIABLES DE ESTÉTICA GENERAL
-   Editá estos valores para controlar colores, tipografía y textura global
+   Editá estos valores para controlar colores, tipografía y medidas globales
    ========================================================================== */
 :root {
   /* Paleta de colores - Modo Oscuro */
-  --bg-color: #0a0a0a;          /* Negro sólido (cambiá a #000000 si querés negro absoluto) */
+  --bg-color: #0a0a0a;          /* Negro sólido (cambiá a #000000 si el fondo del video es negro puro) */
   --header-bg: rgba(10, 10, 10, 0.85); /* Fondo translúcido de la barra superior */
   --text-main: #ffffff;         /* Tinta principal blanca */
   --text-muted: #9a9a9a;        /* Texto secundario / etiquetas gris claro */
   --border-color: rgba(255, 255, 255, 0.14); /* Líneas divisorias sutiles */
   --surface-placeholder: rgba(255, 255, 255, 0.04); /* Fondo para cuadros de imagen */
 
-  /* Intensidad de la textura (0 = fondo completamente sólido) */
-  --texture-opacity: 0;
-
   /* Tipografías */
   --font-display: 'Syne', sans-serif;
   --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Tamaño máximo del logo animado en el inicio */
+  --logo-max-width: 680px;
 
   /* Espaciados y medidas */
   --header-height: 76px;
@@ -59,13 +59,6 @@ ul {
 }
 
 /* ==========================================================================
-   CAPA DE TEXTURA (DESACTIVADA PARA NEGRO SÓLIDO)
-   ========================================================================== */
-.paper-texture {
-  display: none;
-}
-
-/* ==========================================================================
    BARRA SUPERIOR (TOP BAR)
    ========================================================================== */
 .top-bar {
@@ -77,19 +70,11 @@ ul {
   padding: 0 var(--side-padding);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--header-bg);
   backdrop-filter: blur(8px);
   z-index: 100;
-}
-
-.brand {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }
 
 .main-nav ul {
@@ -161,32 +146,30 @@ h2 {
 }
 
 /* ==========================================================================
-   1. INICIO (HERO)
+   1. INICIO (LOGO ANIMADO CENTRADO)
    ========================================================================== */
 .hero {
   min-height: 100vh;
-  padding-top: calc(var(--header-height) + 40px);
+  padding: var(--header-height) var(--side-padding) 0;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(3.2rem, 9.2vw, 7rem);
-  font-weight: 800;
-  line-height: 0.94;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
+.hero-logo-wrapper {
+  width: 100%;
+  max-width: var(--logo-max-width);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.hero .subtitle {
-  font-family: var(--font-body);
-  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
-  font-weight: 300;
-  color: var(--text-muted);
-  max-width: 540px;
-  line-height: 1.55;
+.hero-logo-video {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+  user-select: none;
 }
 
 /* ==========================================================================
@@ -282,4 +265,18 @@ h2 {
    ========================================================================== */
 @media (max-width: 640px) {
   .top-bar {
-    height:
+    height: 64px;
+  }
+
+  .main-nav ul {
+    gap: 16px;
+  }
+
+  .main-nav a {
+    font-size: 0.78rem;
+  }
+
+  .section {
+    padding: 76px 0;
+  }
+}
