@@ -74,51 +74,6 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 3: PROYECTOS -->
-    <section id="proyectos" class="section">
-      <div class="container">
-        <span class="section-label">02 / Proyectos</span>
-        <h2>Trabajos seleccionados</h2>
-        
-        <div class="projects-grid">
-          <!-- Proyecto 1 -->
-          <article class="project-card">
-            <div class="project-thumb">
-              <span>16:9</span>
-            </div>
-            <div class="project-meta">
-              <h3>Nombre del Proyecto 01</h3>
-              <span>2026 — Categoría</span>
-            </div>
-          </article>
-
-          <!-- Proyecto 2 -->
-          <article class="project-card">
-            <div class="project-thumb">
-              <span>16:9</span>
-            </div>
-            <div class="project-meta">
-              <h3>Nombre del Proyecto 02</h3>
-              <span>2026 — Categoría</span>
-            </div>
-          </article>
-
-          <!-- Proyecto 3 -->
-          <article class="project-card">
-            <div class="project-thumb">
-              <span>16:9</span>
-            </div>
-            <div class="project-meta">
-              <h3>Nombre del Proyecto 03</h3>
-              <span>2025 — Categoría</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>CORTE A</span>
@@ -131,7 +86,7 @@
     const introVideo = document.querySelector('.hero-logo-video');
 
     if (introVideo) {
-      const margenFinal = 0.15;
+      const margenFinal = 0.2;
 
       function congelarUltimoCuadro() {
         if (introVideo.duration && introVideo.currentTime >= introVideo.duration - margenFinal) {
