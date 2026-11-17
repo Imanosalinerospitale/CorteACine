@@ -22,6 +22,7 @@
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#quienes-somos">Quiénes somos</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
       </ul>
     </nav>
   </header>
@@ -29,7 +30,7 @@
   <!-- Contenido principal -->
   <main>
 
-<!-- SECCIÓN 1: INICIO (LOGO ANIMADO) -->
+    <!-- SECCIÓN 1: INICIO (LOGO ANIMADO) -->
     <section id="inicio" class="section hero">
       <div class="hero-logo-wrapper">
         <video class="hero-logo-video" autoplay muted playsinline preload="auto">
@@ -107,16 +108,18 @@
     </div>
   </footer>
 
+  <!-- Script para mantener estático el último cuadro del logo animado -->
   <script>
     const introVideo = document.querySelector('.hero-logo-video');
 
     if (introVideo) {
       introVideo.addEventListener('timeupdate', () => {
-        if (introVideo.duration && introVideo.currentTime >= introVideo.duration - 0.01) {
+        if (introVideo.duration && introVideo.currentTime >= introVideo.duration - 0.15) {
           introVideo.pause();
         }
       });
     }
   </script>
+
 </body>
 </html>
