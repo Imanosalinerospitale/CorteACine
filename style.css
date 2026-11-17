@@ -270,12 +270,12 @@ h2 {
 
 @media (max-width: 640px) {
   .top-bar {
-    height: 60px;
+    height: 68px; /* Un poco más de aire vertical para que respire el logo */
     justify-content: space-between;
   }
 
   .brand-logo img {
-    height: 22px;
+    height: 40px; /* Proporcional en celular */
   }
 
   .main-nav ul {
@@ -288,7 +288,7 @@ h2 {
   }
 
   .hero {
-    padding-top: 60px;
+    padding-top: 68px;
   }
 
   .footer-inner {
@@ -296,4 +296,5 @@ h2 {
     text-align: center;
     gap: 12px;
   }
+}
 }
