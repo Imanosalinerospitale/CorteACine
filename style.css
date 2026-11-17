@@ -66,12 +66,30 @@ ul {
   padding: 0 var(--side-padding);
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
+  gap: 20px;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--header-bg);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   z-index: 100;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+
+.brand-logo:hover {
+  opacity: 0.75;
+}
+
+.brand-logo img {
+  height: 28px;
+  width: auto;
+  display: block;
 }
 
 .main-nav ul {
@@ -146,7 +164,7 @@ h2 {
    1. INICIO (LOGO ANIMADO CENTRADO)
    ========================================================================== */
 .hero {
-  min-height: 100svh; /* Usa svh para evitar saltos con la barra de direcciones en celulares */
+  min-height: 100svh;
   padding: var(--header-height) var(--side-padding) 0;
   display: flex;
   align-items: center;
@@ -184,7 +202,7 @@ h2 {
   line-height: 1.75;
   color: var(--text-secondary);
   margin-bottom: 24px;
-  break-inside: avoid; /* Evita que un párrafo se corte a la mitad entre columnas */
+  break-inside: avoid;
 }
 
 .about-columns p:last-child {
@@ -236,20 +254,12 @@ h2 {
   width: 100%;
 }
 
-@media (max-width: 640px) {
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-  }
-}
-
 /* ==========================================================================
    RESPONSIVE TABLET Y CELULARES
    ========================================================================== */
 @media (max-width: 768px) {
   .about-columns {
-    columns: 1; /* Pasa a una sola columna limpia en pantallas chicas */
+    columns: 1;
   }
 
   .about-columns p {
@@ -280,5 +290,10 @@ h2 {
   .hero {
     padding-top: 60px;
   }
-}
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
 }
