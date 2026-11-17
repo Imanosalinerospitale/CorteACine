@@ -1,7 +1,3 @@
-/* ==========================================================================
-   VARIABLES DE ESTÉTICA GENERAL
-   Editá estos valores para controlar colores, tipografía y textura global
-   ========================================================================== */
 :root {
   /* Paleta de colores */
   --bg-color: #E6E0D8;          /* Piedra cálido / arena base */
@@ -12,7 +8,7 @@
   --surface-placeholder: rgba(24, 24, 24, 0.045); /* Fondo para cuadros de imagen */
 
   /* Intensidad de la textura (0.0 = liso | 0.48 = equilibrado | 0.75 = bien marcada) */
-  --texture-opacity: 0.48;
+  --texture-opacity: 0.18;
 
   /* Tipografías */
   --font-display: 'Syne', sans-serif;
