@@ -255,6 +255,82 @@ h2 {
 }
 
 /* ==========================================================================
+   PÁGINAS INTERNAS Y GRILLA DE PÓSTERS (PROYECTOS)
+   ========================================================================== */
+.page-main {
+  padding-top: var(--header-height);
+}
+
+.main-nav a.active::after {
+  width: 100%;
+}
+
+.posters-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(28px, 3.5vw, 44px) clamp(20px, 2.8vw, 36px);
+}
+
+.poster-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.poster-frame {
+  width: 100%;
+  aspect-ratio: 591 / 846;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.poster-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.poster-card:hover .poster-frame {
+  border-color: rgba(255, 255, 255, 0.45);
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.poster-card:hover .poster-frame img {
+  transform: scale(1.025);
+}
+
+.poster-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.poster-meta h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-main);
+}
+
+.poster-meta span {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
    RESPONSIVE TABLET Y CELULARES
    ========================================================================== */
 @media (max-width: 768px) {
@@ -296,5 +372,20 @@ h2 {
     text-align: center;
     gap: 12px;
   }
+   @media (max-width: 900px) {
+  .posters-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+   @media (max-width: 640px) {
+  .page-main {
+    padding-top: 68px;
+  }
+
+  .posters-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
 }
 }
