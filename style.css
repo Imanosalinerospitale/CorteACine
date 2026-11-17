@@ -261,19 +261,24 @@ h2 {
 @media (max-width: 640px) {
   .top-bar {
     height: 60px;
-    justify-content: center; /* Centra los 4 enlaces en celular para mejor acceso táctil */
+    justify-content: space-between;
+  }
+
+  .brand-logo img {
+    height: 22px;
   }
 
   .main-nav ul {
-    gap: 14px;
+    gap: 12px;
   }
 
   .main-nav a {
-    font-size: 0.74rem;
-    letter-spacing: 0.06em;
+    font-size: 0.7rem;
+    letter-spacing: 0.05em;
   }
 
   .hero {
     padding-top: 60px;
   }
+}
 }
