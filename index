@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CORTE A</title>
+  
+  <!-- Google Fonts: Economica -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Economica:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Capa fija de textura orgánica (papel / revoque fino) -->
+  <div class="paper-texture" aria-hidden="true"></div>
+
+  <!-- Barra superior -->
+  <header class="top-bar">
+    <a href="#inicio" class="brand">CORTE A</a>
+    
+    <nav class="main-nav" aria-label="Navegación principal">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#quienes-somos">Quiénes somos</a></li>
+        <li><a href="#proyectos">Proyectos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Contenido principal -->
+  <main>
+
+    <!-- SECCIÓN 1: INICIO -->
+    <section id="inicio" class="section hero">
+      <div class="container">
+        <h1>CORTE A</h1>
+        <p class="subtitle">Espacio reservado para la bajada principal o pieza audiovisual destacada del inicio.</p>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: QUIÉNES SOMOS -->
+    <section id="quienes-somos" class="section">
+      <div class="container">
+        <span class="section-label">01 / Quiénes somos</span>
+        <h2>Identidad y enfoque</h2>
+        <div class="about-grid">
+          <p>
+            Texto institucional de presentación. Acá podés desarrollar la visión del proyecto, la forma de trabajar y el recorrido del equipo con total claridad y aire visual.
+          </p>
+          <p>
+            Segundo bloque opcional para detalles de servicios, enfoque narrativo o datos de contacto directo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 3: PROYECTOS -->
+    <section id="proyectos" class="section">
+      <div class="container">
+        <span class="section-label">02 / Proyectos</span>
+        <h2>Trabajos seleccionados</h2>
+        
+        <div class="projects-grid">
+          <!-- Proyecto 1 -->
+          <article class="project-card">
+            <div class="project-thumb">
+              <span>16:9</span>
+            </div>
+            <div class="project-meta">
+              <h3>Nombre del Proyecto 01</h3>
+              <span>2026 — Categoría</span>
+            </div>
+          </article>
+
+          <!-- Proyecto 2 -->
+          <article class="project-card">
+            <div class="project-thumb">
+              <span>16:9</span>
+            </div>
+            <div class="project-meta">
+              <h3>Nombre del Proyecto 02</h3>
+              <span>2026 — Categoría</span>
+            </div>
+          </article>
+
+          <!-- Proyecto 3 -->
+          <article class="project-card">
+            <div class="project-thumb">
+              <span>16:9</span>
+            </div>
+            <div class="project-meta">
+              <h3>Nombre del Proyecto 03</h3>
+              <span>2025 — Categoría</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span>CORTE A</span>
+      <span>© 2026</span>
+    </div>
+  </footer>
+
+</body>
+</html>
