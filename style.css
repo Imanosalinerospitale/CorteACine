@@ -1,25 +1,21 @@
 /* ==========================================================================
    VARIABLES DE ESTÉTICA GENERAL
-   Editá estos valores para controlar colores, tipografía y medidas globales
    ========================================================================== */
 :root {
-  /* Paleta de colores - Modo Oscuro */
-  --bg-color: #0a0a0a;          /* Negro sólido */
-  --header-bg: rgba(10, 10, 10, 0.85); /* Fondo translúcido de la barra superior */
-  --text-main: #ffffff;         /* Tinta principal blanca */
-  --text-secondary: #d4d4d4;    /* Blanco suave para párrafos largos (descansa la vista) */
-  --text-muted: #9a9a9a;        /* Texto secundario / etiquetas gris claro */
-  --border-color: rgba(255, 255, 255, 0.14); /* Líneas divisorias sutiles */
-  --surface-placeholder: rgba(255, 255, 255, 0.04); /* Fondo para cuadros de imagen */
+  /* Paleta de colores */
+  --bg-color: #0a0a0a;
+  --header-bg: rgba(10, 10, 10, 0.88);
+  --text-main: #ffffff;
+  --text-secondary: #d4d4d4;
+  --text-muted: #9a9a9a;
+  --border-color: rgba(255, 255, 255, 0.14);
 
   /* Tipografías */
   --font-display: 'Syne', sans-serif;
   --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Tamaño máximo del logo animado en el inicio */
+  /* Medidas y espaciados */
   --logo-max-width: 1360px;
-
-  /* Espaciados y medidas */
   --header-height: 76px;
   --container-max: 1180px;
   --side-padding: clamp(20px, 5vw, 64px);
@@ -47,7 +43,6 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
-  position: relative;
 }
 
 a {
@@ -74,14 +69,15 @@ ul {
   justify-content: flex-end;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--header-bg);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   z-index: 100;
 }
 
 .main-nav ul {
   display: flex;
   align-items: center;
-  gap: clamp(20px, 3.5vw, 40px);
+  gap: clamp(18px, 3.5vw, 40px);
 }
 
 .main-nav a {
@@ -91,8 +87,8 @@ ul {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   position: relative;
-  padding: 4px 0;
-  transition: opacity 0.2s ease;
+  padding: 6px 0;
+  white-space: nowrap;
 }
 
 .main-nav a::after {
@@ -121,7 +117,7 @@ ul {
 }
 
 .section {
-  padding: 115px 0;
+  padding: clamp(80px, 10vw, 120px) 0;
   border-bottom: 1px solid var(--border-color);
   scroll-margin-top: var(--header-height);
 }
@@ -143,14 +139,14 @@ h2 {
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  margin-bottom: 48px;
+  margin-bottom: clamp(32px, 5vw, 48px);
 }
 
 /* ==========================================================================
    1. INICIO (LOGO ANIMADO CENTRADO)
    ========================================================================== */
 .hero {
-  min-height: 100vh;
+  min-height: 100svh; /* Usa svh para evitar saltos con la barra de direcciones en celulares */
   padding: var(--header-height) var(--side-padding) 0;
   display: flex;
   align-items: center;
@@ -174,94 +170,30 @@ h2 {
 }
 
 /* ==========================================================================
-   2. QUIÉNES SOMOS
+   2. QUIÉNES SOMOS (COLUMNAS EQUILIBRADAS)
    ========================================================================== */
-.about-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: clamp(32px, 5vw, 64px);
-  align-items: start;
+.about-columns {
+  columns: 2;
+  column-gap: clamp(36px, 5vw, 68px);
 }
 
-.about-col {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.about-col p {
+.about-columns p {
   font-family: var(--font-body);
   font-size: 1.05rem;
   font-weight: 300;
   line-height: 1.75;
   color: var(--text-secondary);
+  margin-bottom: 24px;
+  break-inside: avoid; /* Evita que un párrafo se corte a la mitad entre columnas */
 }
 
-.about-col .about-lead {
-  font-size: 1.25rem;
-  font-weight: 400;
-  line-height: 1.55;
+.about-columns p:last-child {
+  margin-bottom: 0;
+}
+
+.about-columns strong {
+  font-weight: 600;
   color: var(--text-main);
-}
-
-.about-col strong {
-  font-weight: 500;
-  color: var(--text-main);
-}
-
-/* ==========================================================================
-   3. PROYECTOS
-   ========================================================================== */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 36px;
-}
-
-.project-card {
-  cursor: pointer;
-}
-
-.project-thumb {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  background-color: var(--surface-placeholder);
-  border: 1px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  transition: background-color 0.25s ease, border-color 0.25s ease;
-}
-
-.project-card:hover .project-thumb {
-  background-color: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.35);
-}
-
-.project-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
-}
-
-.project-meta h3 {
-  font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.project-meta span {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 400;
-  color: var(--text-muted);
-  white-space: nowrap;
 }
 
 /* ==========================================================================
@@ -281,26 +213,35 @@ h2 {
 }
 
 /* ==========================================================================
-   RESPONSIVE MÓVIL
+   RESPONSIVE TABLET Y CELULARES
    ========================================================================== */
+@media (max-width: 768px) {
+  .about-columns {
+    columns: 1; /* Pasa a una sola columna limpia en pantallas chicas */
+  }
+
+  .about-columns p {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+}
+
 @media (max-width: 640px) {
   .top-bar {
-    height: 64px;
+    height: 60px;
+    justify-content: center; /* Centra los 4 enlaces en celular para mejor acceso táctil */
   }
 
   .main-nav ul {
-    gap: 16px;
+    gap: 14px;
   }
 
   .main-nav a {
-    font-size: 0.78rem;
+    font-size: 0.74rem;
+    letter-spacing: 0.06em;
   }
 
-  .section {
-    padding: 76px 0;
-  }
-
-  .about-col .about-lead {
-    font-size: 1.12rem;
+  .hero {
+    padding-top: 60px;
   }
 }
