@@ -200,16 +200,48 @@ h2 {
    FOOTER
    ========================================================================== */
 .site-footer {
-  padding: 32px 0;
+  padding: 36px 0;
 }
 
 .footer-inner {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 16px;
   font-size: 0.85rem;
+  font-weight: 300;
   letter-spacing: 0.08em;
   color: var(--text-muted);
+}
+
+.footer-link {
+  color: var(--text-main);
+  position: relative;
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--text-main);
+  transition: width 0.25s ease;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 640px) {
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
 }
 
 /* ==========================================================================
