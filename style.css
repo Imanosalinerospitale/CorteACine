@@ -11,11 +11,12 @@
   --border-color: rgba(24, 24, 24, 0.14); /* Líneas divisorias sutiles */
   --surface-placeholder: rgba(24, 24, 24, 0.045); /* Fondo para cuadros de imagen */
 
-  /* Intensidad de la textura (0.0 = liso | 0.45 = sutil | 0.75 = bien marcada) */
+  /* Intensidad de la textura (0.0 = liso | 0.48 = equilibrado | 0.75 = bien marcada) */
   --texture-opacity: 0.48;
 
-  /* Tipografía */
-  --font-main: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Tipografías */
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Espaciados y medidas */
   --header-height: 76px;
@@ -40,8 +41,9 @@ html {
 body {
   background-color: var(--bg-color);
   color: var(--text-main);
-  font-family: var(--font-main);
-  line-height: 1.55;
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   position: relative;
@@ -58,7 +60,6 @@ ul {
 
 /* ==========================================================================
    TEXTURA ORGÁNICA (RELIEVE FINO RUGOSO / PAPEL PRENSADO)
-   Alta frecuencia y luz rasante para replicar micro-aristas sin manchas
    ========================================================================== */
 .paper-texture {
   position: fixed;
@@ -94,9 +95,10 @@ ul {
 }
 
 .brand {
-  font-size: 1.15rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
@@ -107,9 +109,10 @@ ul {
 }
 
 .main-nav a {
-  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   position: relative;
   padding: 4px 0;
@@ -142,26 +145,29 @@ ul {
 }
 
 .section {
-  padding: 110px 0;
+  padding: 115px 0;
   border-bottom: 1px solid var(--border-color);
   scroll-margin-top: var(--header-height);
 }
 
 .section-label {
   display: block;
+  font-family: var(--font-body);
   font-size: 0.8rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--text-muted);
   margin-bottom: 14px;
 }
 
 h2 {
-  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.1;
   letter-spacing: -0.02em;
-  margin-bottom: 40px;
+  margin-bottom: 42px;
 }
 
 /* ==========================================================================
@@ -175,20 +181,22 @@ h2 {
 }
 
 .hero h1 {
-  font-size: clamp(3.2rem, 9vw, 6.8rem);
-  font-weight: 700;
-  line-height: 0.98;
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 9.2vw, 7rem);
+  font-weight: 800;
+  line-height: 0.94;
   letter-spacing: -0.03em;
   text-transform: uppercase;
   margin-bottom: 24px;
 }
 
 .hero .subtitle {
-  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
-  font-weight: 400;
+  font-family: var(--font-body);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  font-weight: 300;
   color: var(--text-muted);
   max-width: 540px;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 /* ==========================================================================
@@ -201,9 +209,10 @@ h2 {
 }
 
 .about-grid p {
+  font-family: var(--font-body);
   font-size: 1.05rem;
-  font-weight: 400;
-  line-height: 1.65;
+  font-weight: 300;
+  line-height: 1.7;
   color: var(--text-main);
 }
 
@@ -228,10 +237,10 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   color: var(--text-muted);
   font-size: 0.85rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   transition: background-color 0.25s ease;
 }
 
@@ -247,13 +256,16 @@ h2 {
 }
 
 .project-meta h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
   letter-spacing: -0.01em;
 }
 
 .project-meta span {
+  font-family: var(--font-body);
   font-size: 0.85rem;
+  font-weight: 400;
   color: var(--text-muted);
   white-space: nowrap;
 }
@@ -283,7 +295,7 @@ h2 {
   }
 
   .brand {
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
 
   .main-nav ul {
@@ -291,7 +303,7 @@ h2 {
   }
 
   .main-nav a {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
   }
 
   .section {
