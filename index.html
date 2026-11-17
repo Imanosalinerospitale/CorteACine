@@ -15,13 +15,8 @@
 </head>
 <body>
 
-  <!-- Capa fija de textura orgánica (papel / revoque fino) -->
-  <div class="paper-texture" aria-hidden="true"></div>
-
   <!-- Barra superior -->
   <header class="top-bar">
-    <a href="#inicio" class="brand">CORTE A</a>
-    
     <nav class="main-nav" aria-label="Navegación principal">
       <ul>
         <li><a href="#inicio">Inicio</a></li>
@@ -34,11 +29,12 @@
   <!-- Contenido principal -->
   <main>
 
-    <!-- SECCIÓN 1: INICIO -->
+    <!-- SECCIÓN 1: INICIO (LOGO ANIMADO) -->
     <section id="inicio" class="section hero">
-      <div class="container">
-        <h1>CORTE A</h1>
-        <p class="subtitle">Espacio reservado para la bajada principal o pieza audiovisual destacada del inicio.</p>
+      <div class="hero-logo-wrapper">
+        <video class="hero-logo-video" autoplay muted playsinline preload="auto">
+          <source src="Recursos/intro.mp4" type="video/mp4">
+        </video>
       </div>
     </section>
 
