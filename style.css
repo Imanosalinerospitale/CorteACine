@@ -16,7 +16,7 @@
 
   /* Medidas y espaciados */
   --logo-max-width: 1360px;
-  --header-height: 76px;
+  --header-height: 84px;
   --container-max: 1180px;
   --side-padding: clamp(20px, 5vw, 64px);
 }
@@ -87,7 +87,7 @@ ul {
 }
 
 .brand-logo img {
-  height: 56px; 
+  height: 56px;
   width: auto;
   display: block;
 }
@@ -120,7 +120,8 @@ ul {
   transition: width 0.25s ease;
 }
 
-.main-nav a:hover::after {
+.main-nav a:hover::after,
+.main-nav a.active::after {
   width: 100%;
 }
 
@@ -132,6 +133,10 @@ ul {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: 0 var(--side-padding);
+}
+
+.page-main {
+  padding-top: var(--header-height);
 }
 
 .section {
@@ -215,56 +220,8 @@ h2 {
 }
 
 /* ==========================================================================
-   FOOTER
+   3. PROYECTOS (GRILLA DE PÓSTERS 591x846)
    ========================================================================== */
-.site-footer {
-  padding: 36px 0;
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  font-size: 0.85rem;
-  font-weight: 300;
-  letter-spacing: 0.08em;
-  color: var(--text-muted);
-}
-
-.footer-link {
-  color: var(--text-main);
-  position: relative;
-  padding-bottom: 2px;
-  transition: opacity 0.2s ease;
-}
-
-.footer-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--text-main);
-  transition: width 0.25s ease;
-}
-
-.footer-link:hover::after {
-  width: 100%;
-}
-
-/* ==========================================================================
-   PÁGINAS INTERNAS Y GRILLA DE PÓSTERS (PROYECTOS)
-   ========================================================================== */
-.page-main {
-  padding-top: var(--header-height);
-}
-
-.main-nav a.active::after {
-  width: 100%;
-}
-
 .posters-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -274,6 +231,7 @@ h2 {
 .poster-card {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .poster-frame {
@@ -331,8 +289,160 @@ h2 {
 }
 
 /* ==========================================================================
+   VENTANA MODAL DE PROYECTOS
+   ========================================================================== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.84);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  z-index: 200;
+}
+
+.modal-backdrop.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-window {
+  position: relative;
+  width: 100%;
+  max-width: 780px;
+  max-height: 90svh;
+  overflow-y: auto;
+  background-color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: clamp(24px, 4vw, 40px);
+  transform: translateY(12px);
+  transition: transform 0.25s ease;
+}
+
+.modal-backdrop.is-open .modal-window {
+  transform: translateY(0);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.75rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+  color: var(--text-main);
+}
+
+.modal-body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: clamp(24px, 4vw, 36px);
+  align-items: start;
+}
+
+.modal-poster {
+  width: 100%;
+  aspect-ratio: 591 / 846;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.modal-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-info h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+  padding-right: 24px;
+}
+
+.modal-meta-line {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.modal-synopsis {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+.site-footer {
+  padding: 36px 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.footer-link {
+  color: var(--text-main);
+  position: relative;
+  padding-bottom: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--text-main);
+  transition: width 0.25s ease;
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* ==========================================================================
    RESPONSIVE TABLET Y CELULARES
    ========================================================================== */
+@media (max-width: 900px) {
+  .posters-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .about-columns {
     columns: 1;
@@ -346,12 +456,12 @@ h2 {
 
 @media (max-width: 640px) {
   .top-bar {
-    height: 68px; /* Un poco más de aire vertical para que respire el logo */
+    height: 68px;
     justify-content: space-between;
   }
 
   .brand-logo img {
-    height: 40px; /* Proporcional en celular */
+    height: 40px;
   }
 
   .main-nav ul {
@@ -363,21 +473,7 @@ h2 {
     letter-spacing: 0.05em;
   }
 
-  .hero {
-    padding-top: 68px;
-  }
-
-  .footer-inner {
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-  }
-   @media (max-width: 900px) {
-  .posters-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-   @media (max-width: 640px) {
+  .hero,
   .page-main {
     padding-top: 68px;
   }
@@ -386,6 +482,18 @@ h2 {
     grid-template-columns: 1fr;
     gap: 36px;
   }
-}
-}
+
+  .modal-body {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-poster {
+    max-width: 180px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
 }
