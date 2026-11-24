@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0a">
   <title>CORTE A</title>
   
-  <!-- Favicon (ícono de pestaña y barra de favoritos) -->
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="Recursos/logo.png">
   <link rel="apple-touch-icon" href="Recursos/logo.png">
   
-  <!-- Google Fonts: Syne (títulos) + Outfit (textos) -->
+  <!-- Google Fonts: Syne + Outfit -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Hoja de estilos principal -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Barra superior -->
   <header class="top-bar">
     <a href="#inicio" class="brand-logo" aria-label="CORTE A - Inicio">
       <img src="Recursos/logo.png" alt="CORTE A">
@@ -35,20 +34,16 @@
     </nav>
   </header>
 
-  <!-- Contenido principal -->
   <main>
-
-    <!-- SECCIÓN 1: INICIO (LOGO ANIMADO) -->
     <section id="inicio" class="section hero">
       <div class="hero-logo-wrapper">
-        <video id="introVideo" class="hero-logo-video" autoplay muted playsinline preload="auto">
+        <video id="introVideo" class="hero-logo-video" poster="Recursos/logo.png" autoplay muted playsinline preload="auto">
           <source src="Recursos/intro.mov" type='video/mp4; codecs="hvc1"'>
           <source src="Recursos/intro.webm" type="video/webm">
         </video>
       </div>
     </section>
 
-    <!-- SECCIÓN 2: QUIÉNES SOMOS -->
     <section id="quienes-somos" class="section">
       <div class="container">
         <span class="section-label">01 / Quiénes somos</span>
@@ -76,10 +71,8 @@
         </div>
       </div>
     </section>
-
   </main>
 
-  <!-- Pie de página -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <span>CORTE A</span>
@@ -90,23 +83,18 @@
     </div>
   </footer>
 
-  <!-- Script para congelar el logo antes del fundido a negro -->
   <script>
     const video = document.getElementById('introVideo');
-
     if (video) {
-      const segundoCongelado = 8.75;
-
-      function vigilarVideo() {
-        if (video.currentTime >= segundoCongelado) {
+      const STOP_AT = 8.75;
+      const checkFreeze = () => {
+        if (video.currentTime >= STOP_AT) {
           video.pause();
-          video.currentTime = segundoCongelado;
-          return;
+          video.currentTime = STOP_AT;
+          video.removeEventListener('timeupdate', checkFreeze);
         }
-        requestAnimationFrame(vigilarVideo);
-      }
-
-      requestAnimationFrame(vigilarVideo);
+      };
+      video.addEventListener('timeupdate', checkFreeze);
     }
   </script>
 
