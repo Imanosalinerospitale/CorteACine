@@ -395,6 +395,151 @@ h2 {
 }
 
 /* ==========================================================================
+   4. CONTACTO (DATOS + FORMULARIO)
+   ========================================================================== */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: clamp(40px, 6vw, 84px);
+  align-items: start;
+}
+
+.contact-intro {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 36px;
+}
+
+.contact-item {
+  margin-bottom: 24px;
+}
+
+.contact-item-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.contact-phones {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-value {
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--text-main);
+  transition: opacity 0.2s ease;
+}
+
+a.contact-value:hover {
+  opacity: 0.7;
+}
+
+.contact-value.muted {
+  color: var(--text-secondary);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-main);
+  border-radius: 0;
+  transition: border-color 0.25s ease;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.28);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-bottom-color: var(--text-main);
+}
+
+.btn-submit {
+  align-self: flex-start;
+  margin-top: 8px;
+  padding: 13px 28px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: var(--text-main);
+  color: var(--bg-color);
+  border-color: var(--text-main);
+}
+
+.btn-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-status {
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+.form-status.is-success {
+  color: #a3e635;
+}
+
+.form-status.is-error {
+  color: #f87171;
+}
+
+/* ==========================================================================
    FOOTER
    ========================================================================== */
 .site-footer {
