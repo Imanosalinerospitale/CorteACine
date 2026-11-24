@@ -1,8 +1,7 @@
 /* ==========================================================================
-   VARIABLES DE ESTÉTICA GENERAL
+   VARIABLES GLOBALES
    ========================================================================== */
 :root {
-  /* Paleta de colores */
   --bg-color: #0a0a0a;
   --header-bg: rgba(10, 10, 10, 0.88);
   --text-main: #ffffff;
@@ -10,15 +9,13 @@
   --text-muted: #9a9a9a;
   --border-color: rgba(255, 255, 255, 0.14);
 
-  /* Tipografías */
   --font-display: 'Syne', sans-serif;
   --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Medidas y espaciados */
   --logo-max-width: 1360px;
   --header-height: 84px;
   --container-max: 1180px;
-  --side-padding: clamp(20px, 5vw, 64px);
+  --side-padding: clamp(18px, 5vw, 64px);
 }
 
 /* ==========================================================================
@@ -42,12 +39,14 @@ body {
   font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
   overflow-x: hidden;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  touch-action: manipulation;
 }
 
 ul {
@@ -59,15 +58,13 @@ ul {
    ========================================================================== */
 .top-bar {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  inset: 0 0 auto 0;
   height: var(--header-height);
   padding: 0 var(--side-padding);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
   border-bottom: 1px solid var(--border-color);
   background-color: var(--header-bg);
   backdrop-filter: blur(10px);
@@ -95,21 +92,21 @@ ul {
 .main-nav ul {
   display: flex;
   align-items: center;
-  gap: clamp(18px, 3.5vw, 40px);
+  gap: clamp(14px, 3.5vw, 40px);
 }
 
 .main-nav a {
-  font-family: var(--font-body);
+  position: relative;
+  padding: 8px 0;
   font-size: 0.88rem;
   font-weight: 300;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  position: relative;
-  padding: 6px 0;
   white-space: nowrap;
 }
 
-.main-nav a::after {
+.main-nav a::after,
+.footer-link::after {
   content: '';
   position: absolute;
   left: 0;
@@ -121,12 +118,13 @@ ul {
 }
 
 .main-nav a:hover::after,
-.main-nav a.active::after {
+.main-nav a.active::after,
+.footer-link:hover::after {
   width: 100%;
 }
 
 /* ==========================================================================
-   ESTRUCTURA GENERAL DE SECCIONES
+   ESTRUCTURA GENERAL
    ========================================================================== */
 .container {
   width: 100%;
@@ -140,15 +138,14 @@ ul {
 }
 
 .section {
-  padding: clamp(80px, 10vw, 120px) 0;
+  padding: clamp(72px, 10vw, 120px) 0;
   border-bottom: 1px solid var(--border-color);
   scroll-margin-top: var(--header-height);
 }
 
 .section-label {
   display: block;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -166,7 +163,7 @@ h2 {
 }
 
 /* ==========================================================================
-   1. INICIO (LOGO ANIMADO CENTRADO)
+   1. INICIO (HERO)
    ========================================================================== */
 .hero {
   min-height: 100svh;
@@ -179,9 +176,6 @@ h2 {
 .hero-logo-wrapper {
   width: 100%;
   max-width: var(--logo-max-width);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .hero-logo-video {
@@ -193,7 +187,7 @@ h2 {
 }
 
 /* ==========================================================================
-   2. QUIÉNES SOMOS (COLUMNAS EQUILIBRADAS)
+   2. QUIÉNES SOMOS
    ========================================================================== */
 .about-columns {
   columns: 2;
@@ -201,7 +195,6 @@ h2 {
 }
 
 .about-columns p {
-  font-family: var(--font-body);
   font-size: 1.05rem;
   font-weight: 300;
   line-height: 1.75;
@@ -232,6 +225,7 @@ h2 {
   display: flex;
   flex-direction: column;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .poster-frame {
@@ -240,14 +234,8 @@ h2 {
   background-color: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-color);
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   margin-bottom: 16px;
-  color: var(--text-muted);
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition: border-color 0.3s ease;
 }
 
 .poster-frame img {
@@ -260,36 +248,29 @@ h2 {
 
 .poster-card:hover .poster-frame {
   border-color: rgba(255, 255, 255, 0.45);
-  background-color: rgba(255, 255, 255, 0.06);
 }
 
 .poster-card:hover .poster-frame img {
   transform: scale(1.025);
 }
 
-.poster-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
 .poster-meta h3 {
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 700;
+  line-height: 1.3;
   letter-spacing: -0.01em;
-  color: var(--text-main);
+  margin-bottom: 4px;
 }
 
 .poster-meta span {
-  font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 300;
   color: var(--text-muted);
 }
 
 /* ==========================================================================
-   VENTANA MODAL DE PROYECTOS
+   MODAL DE PROYECTOS
    ========================================================================== */
 .modal-backdrop {
   position: fixed;
@@ -300,7 +281,7 @@ h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 20px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.25s ease, visibility 0.25s ease;
@@ -316,11 +297,12 @@ h2 {
   position: relative;
   width: 100%;
   max-width: 860px;
-  max-height: 90svh;
+  max-height: 88svh;
   overflow-y: auto;
+  overscroll-behavior: contain;
   background-color: #111111;
   border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: clamp(24px, 4vw, 42px);
+  padding: clamp(22px, 4vw, 42px);
   transform: translateY(12px);
   transition: transform 0.25s ease;
 }
@@ -331,15 +313,17 @@ h2 {
 
 .modal-close {
   position: absolute;
-  top: 16px;
-  right: 18px;
+  top: 14px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
   background: none;
   border: none;
   color: var(--text-muted);
   font-size: 1.75rem;
   line-height: 1;
   cursor: pointer;
-  padding: 4px 8px;
+  touch-action: manipulation;
   transition: color 0.2s ease;
 }
 
@@ -370,17 +354,16 @@ h2 {
 
 .modal-info h3 {
   font-family: var(--font-display);
-  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+  font-size: clamp(1.3rem, 2.5vw, 1.85rem);
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
   margin-bottom: 8px;
-  padding-right: 28px;
+  padding-right: 32px;
 }
 
 .modal-meta-line {
   font-size: 0.9rem;
-  font-weight: 400;
   color: var(--text-muted);
   margin-bottom: 20px;
   padding-bottom: 14px;
@@ -418,10 +401,8 @@ h2 {
   padding: 10px 20px;
   border: 1px solid rgba(255, 255, 255, 0.35);
   font-size: 0.82rem;
-  font-weight: 400;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-main);
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -435,19 +416,18 @@ h2 {
    4. CONTACTO (ESTÉTICA EDITORIAL MINIMALISTA)
    ========================================================================== */
 .contact-section {
-  padding-top: clamp(96px, 12vw, 140px);
-  padding-bottom: clamp(96px, 12vw, 140px);
+  padding-block: clamp(84px, 12vw, 140px);
 }
 
 .contact-section h2 {
   max-width: 620px;
-  margin-bottom: clamp(56px, 7vw, 88px);
+  margin-bottom: clamp(48px, 7vw, 88px);
 }
 
 .contact-layout {
   display: grid;
   grid-template-columns: 1fr 1.25fr;
-  gap: clamp(56px, 8vw, 120px);
+  gap: clamp(48px, 8vw, 120px);
   align-items: start;
 }
 
@@ -456,14 +436,14 @@ h2 {
   font-weight: 300;
   line-height: 1.8;
   color: var(--text-secondary);
-  margin-bottom: 52px;
+  margin-bottom: 48px;
   max-width: 400px;
 }
 
 .contact-blocks {
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 32px;
 }
 
 .contact-item {
@@ -474,7 +454,6 @@ h2 {
 .contact-item-label {
   display: block;
   font-size: 0.72rem;
-  font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -491,10 +470,10 @@ h2 {
   display: inline-flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 16px;
+  flex-wrap: wrap;
+  gap: 8px 16px;
   font-size: 1rem;
   font-weight: 300;
-  color: var(--text-main);
   transition: color 0.25s ease;
 }
 
@@ -505,7 +484,6 @@ a.contact-value:hover {
 .phone-num {
   color: var(--text-muted);
   font-size: 0.92rem;
-  letter-spacing: 0.02em;
 }
 
 .contact-value.muted {
@@ -515,7 +493,7 @@ a.contact-value:hover {
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 38px;
+  gap: 36px;
   padding-top: 20px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -534,7 +512,6 @@ a.contact-value:hover {
 
 .form-group label {
   font-size: 0.72rem;
-  font-weight: 400;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--text-muted);
@@ -548,7 +525,7 @@ a.contact-value:hover {
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
   padding: 12px 0 14px;
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: max(16px, 1rem); /* Evita zoom automático en iOS */
   font-weight: 300;
   color: var(--text-main);
   border-radius: 0;
@@ -564,7 +541,6 @@ a.contact-value:hover {
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: rgba(255, 255, 255, 0.22);
-  font-weight: 300;
 }
 
 .form-group input:focus,
@@ -596,6 +572,7 @@ a.contact-value:hover {
   text-transform: uppercase;
   color: var(--text-main);
   cursor: pointer;
+  touch-action: manipulation;
   transition: border-color 0.3s ease, opacity 0.3s ease;
 }
 
@@ -624,7 +601,7 @@ a.contact-value:hover {
 }
 
 .form-status.is-success {
-  color: #d4d4d4;
+  color: var(--text-secondary);
 }
 
 .form-status.is-error {
@@ -653,22 +630,6 @@ a.contact-value:hover {
   color: var(--text-main);
   position: relative;
   padding-bottom: 2px;
-  transition: opacity 0.2s ease;
-}
-
-.footer-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--text-main);
-  transition: width 0.25s ease;
-}
-
-.footer-link:hover::after {
-  width: 100%;
 }
 
 /* ==========================================================================
@@ -696,50 +657,55 @@ a.contact-value:hover {
 }
 
 @media (max-width: 640px) {
-  .top-bar {
-    height: 68px;
-    justify-content: space-between;
+  :root {
+    --header-height: 66px;
   }
 
   .brand-logo img {
-    height: 40px;
+    height: 38px;
   }
 
   .main-nav ul {
-    gap: 12px;
+    gap: 11px;
   }
 
   .main-nav a {
-    font-size: 0.7rem;
-    letter-spacing: 0.05em;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
   }
 
-  .hero,
-  .page-main {
-    padding-top: 68px;
+  .posters-grid,
+  .modal-body,
+  .form-row {
+    grid-template-columns: 1fr;
   }
 
   .posters-grid {
-    grid-template-columns: 1fr;
     gap: 36px;
   }
 
-  .modal-body {
-    grid-template-columns: 1fr;
-  }
-
   .modal-poster {
-    max-width: 180px;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-    gap: 38px;
+    max-width: 170px;
   }
 
   .footer-inner {
     flex-direction: column;
     text-align: center;
     gap: 12px;
+  }
+}
+
+@media (max-width: 390px) {
+  .brand-logo img {
+    height: 32px;
+  }
+
+  .main-nav ul {
+    gap: 8px;
+  }
+
+  .main-nav a {
+    font-size: 0.63rem;
+    letter-spacing: 0.02em;
   }
 }
